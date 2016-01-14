@@ -1,0 +1,13 @@
+<!-- Numbers -->
+
+<p>Numbers work pretty much like you'd expect. You don't need quotation marks like strings, and you can combine them using normal math symbols like <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code></p>
+
+<p>Adding two numbers together:</p>
+<pre>
+  7 + 11
+</pre>
+
+<p>Finding the area of a triangle:</p> 
+<pre>
+  (1/2) * base * height
+</pre>
