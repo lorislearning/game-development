@@ -17,8 +17,8 @@
 <pre>
   "peanutbutter"
 </pre>
-
-<p>Don't forget to add spaces if you need them:</p>
+<hr>
+<p>But don't forget to add spaces if you need them!</p>
 
 <pre>
   "peanut " + "butter" 
