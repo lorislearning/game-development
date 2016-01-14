@@ -1,0 +1,25 @@
+<!-- Strings -->
+
+<p>Strings are chunks of text that are surrounded by quotations. They look a lot like variables, except they can have spaces and need to be in either single or double quotations</p>
+
+<pre>
+  "A string!"
+</pre>
+
+<p>You can combine strings with the <code>+</code> sign:</p>
+
+<pre>
+  "peanut" + "butter"
+</pre>
+
+<p>becomes</p>
+
+<pre>
+  "peanutbutter"
+</pre>
+
+<p>Don't forget to add spaces if you need them:</p>
+
+<pre>
+  "peanut " + "butter" 
+</pre>
