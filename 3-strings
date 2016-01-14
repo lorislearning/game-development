@@ -1,6 +1,6 @@
 <!-- Strings -->
 
-<p>Strings are chunks of text that are surrounded by quotations. They look a lot like variables, except they can have spaces and need to be in either single or double quotations</p>
+<p>Strings are chunks of text, like words or sentences. They don't stand for any specific instruction - what you see is what you get - and they're one of the main data types in JavaScript. Strings look a lot like variables, but strings can have spaces and need to be surrounded by either single or double quotations</p>
 
 <pre>
   "A string!"
