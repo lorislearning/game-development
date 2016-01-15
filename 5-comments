@@ -1,0 +1,10 @@
+<!-- Comments -->
+<p>Comments are used to tell the computer it should ignore one or more lines of code. We can still see comments as programmers, though. This makes them really useful as notes for ourselves or other programmers. You acn also quickly comment out some code if you want to see how the program works without it.</p>
+
+<p>A commented line in JavaScript always start with two forward slashes: </p>
+
+<pre>
+  // I'm commented out :(
+</pre>
+
+<p>You can select multiple lines and comment them all out by pressing the <code>ctrl</code> and <code>/</code> keys (or <code>cmd</code> and <code>/</code> for Macs).</p>
