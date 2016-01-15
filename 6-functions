@@ -37,7 +37,9 @@
     alert("What's up, " + name + "!");
   }
 </pre>
-<p><code>name</code> just stands for the actual name you use when you call the <code>sayHello()</code> function. This code:</p>
+<p><code>name</code> just stands for the actual name you use when you call the <code>sayHello()</code> function.</p>
+
+<p>This code:</p>
 
 <pre>sayHello('Neal');</pre>
 
