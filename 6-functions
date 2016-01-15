@@ -45,3 +45,14 @@
 
 <p>pops up an alert that says "What's up, Neal!"</p>
 
+<p>You can add multiple arguments by separating them with commas. This function calculates the area of a rectangle:</p>
+
+<pre>
+  function area(height, width) {
+    alert(height * width);
+  }
+  
+  area(5,10);
+</pre>
+
+
