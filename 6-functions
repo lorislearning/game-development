@@ -1,0 +1,45 @@
+<!-- Functions -->
+
+<p>Functions are just chunks of code that are grouped together. They're kind of like variables, except they only hold instructions, not data. They're also similar to methods, like <code>window.open()</code>, except they don't need to be tied to an object with a <code>.</code></p>
+
+<p>You can actually call alert as a regular function, instead of a method attached to the window object:</p>
+
+<pre>
+  alert("I'm a function!");
+</pre>
+
+<p>Alert is a function that's built into JavaScript, but one of the great things about programming is that you can extend the language however you want! Here's how you write your own function:</p>
+
+<pre>
+  function theName() {
+    // your function's code
+  }
+</pre>
+
+<p>Every function you create needs the <code>function</code> keyword, a name, parentheses and code that goes inside of <code>{ }</code>. Here's an example of a function that says hello:</p>
+
+<pre>
+  function sayHello() {
+    alert("What's up!");
+  }
+</pre>
+
+<p>You can run this function with:</p>
+
+<pre>
+  sayHello();
+</pre>
+
+<p>It would be great if you could customize the function to say hello to a specific person. You can do this by adding an <strong>argument</strong> to the function. Arguments look like variables that live inside a function's parentheses. They're placeholders that get filled whenever a function is called. If you added an argument to the <code>sayHello()</code> function, it would look like:</p> 
+
+<pre>
+  function sayHello(name) {
+    alert("What's up, " + name + "!");
+  }
+</pre>
+<p><code>name</code> just stands for the actual name you use when you call the <code>sayHello()</code> function. This code:</p>
+
+<pre>sayHello('Neal');</pre>
+
+<p>pops up an alert that says "What's up, Neal!"</p>
+
