@@ -1,0 +1,22 @@
+<!-- the phaser skeleton -->
+
+<p>As long as the Phaser JavaScript is loaded in, this skeleton will help you get started creating games using Phaser.</p>
+
+<p>The first line generates the game screen, which is 400 pixels high and 400 pixels wide. The <code>preloadFunction()</code> loads in files you might need for your game, like images. The <code>createFunction()</code> sets up the game by letting you do things like place characters on the screen or add gravity. The <code>updateFunction()</code> runs 60 times per second and lets you do things like move characters around on the screen.</p>
+
+<pre>
+  var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+  function preloadFunction() {
+    game.load.crossOrigin = true;
+  }
+
+  function createFunction() {
+
+  }
+
+  function updateFunction() {
+
+  }
+</pre>
+<p><a href="http://jsbin.com/piqabo/37/edit?js,output" target="_blank">Link to code</a></p>

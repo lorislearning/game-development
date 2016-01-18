@@ -1,0 +1,20 @@
+<!-- Loading images in Phaser -->
+
+<p>Add the following line's to your <code>preloadFunction()</code> and <code>createFunction()</code>:</p>
+<pre>
+
+  function preloadFunction() {
+    ...
+    game.load.image('troll', 'http://i.imgur.com/Vm4PZ4h.gif');
+  }
+
+  function createFunction() {
+    game.add.sprite(200,100, 'troll');
+  }
+</pre>
+<p><a href="http://jsbin.com/piqabo/4/edit?js,output" target="_blank">Link to code</a></p>
+
+<p>The <code>image()</code> method takes in two arguments: a name and a link to an image. It loads the image into your game. Both arguments are strings.</p>
+
+<p>The <code>sprite()</code> method takes in three arguments: an x-value, a y-value and a name. The x-value and y-value places the sprite on a specific place on your game screen and the name should match up with an image from <code>preloadFunction()</code>. The first two arguments are numbers and the last argument is a string. </p>
+
