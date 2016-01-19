@@ -1,0 +1,23 @@
+<!-- Adding bounce -->
+
+<p>You can get sprites to bounce with:</p>
+
+<pre>
+  someSprite.body.bounce.setTo(someMultiplier);
+</pre>
+
+
+<p>Here it is in context:</p>
+
+<pre>
+  function createFunction() {
+    ...
+    player.body.collideWorldBounds = true;
+    player.body.bounce.setTo(0.8);
+    ...
+  }
+</pre>
+
+<p><a href="http://jsbin.com/piqabo/94/edit?js,output" target="_blank">Link to code</a></p>
+
+<p>If you set the bounce multiplier to less than 1, the sprite will bounce shorter and shorter distances.</p>

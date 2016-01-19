@@ -1,0 +1,32 @@
+<!-- Adding physics -->
+
+<p>Starting with this code:</p>
+<p><a href="http://jsbin.com/piqabo/7/edit?js,output" target="_blank">Link to code</a></p>
+
+<p>Add the following lines:</p>
+
+<pre>
+
+  // Addd this line above the createFunction()
+  var player;
+
+  function createFunction() {
+    game.physics.startSystem(Phaser.Physics.ARCADE);
+    player = game.add.sprite(200, 100, 'troll');
+    game.physics.arcade.enable(player);
+    player.body.gravity.y = -100;
+    player.body.collideWorldBounds = true;
+
+    ...
+  }
+</pre>
+
+<p>You need to create a player variable outside the <code>createFunction()</code> so you can access it in the other functions too. The first in the <code>createFunction()</code> line adds the "arcade" physics system to your game. The third line adds physics to the player object. The fourth line adds gravity in the "y" direction. The last line makes sure the player object can't go past the edge of the game. </p>
+
+<p>You'll end up with the code at this link:</p>
+<p><a href="http://jsbin.com/piqabo/12/edit?js,output" target="_blank">Link to code</a></p>
+
+<p>Try changing the gravity numbers and see what happens!</p>
+
+
+

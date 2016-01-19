@@ -1,0 +1,18 @@
+<!-- Scaling sprites -->
+<p>You can scale a sprite with:</p>
+<pre>
+  someSprite.scale.setTo(xMultiplier,  yMultiplier);
+</pre>
+
+<p>Here it is in context:</p>
+<pre>
+  function createFunction() {
+    var player = game.add.sprite(200,100, 'troll');
+    player.scale.setTo(2,2);
+  }
+</pre>
+
+<p><a href="http://jsbin.com/piqabo/92/edit?js,output?js,output" target="_blank">Link to code</a></p>
+
+<p>You first need to access the the <code>scale</code> property then call <code>setTo()</code> on the player's scale. The <code>setTo()</code> method takes in two arguments: the first is a multiplier for the width of the sprite and the second is a multiplier for the height of the sprite. Both arguments need to be numbers.</p>
+

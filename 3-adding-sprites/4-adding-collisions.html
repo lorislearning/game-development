@@ -1,0 +1,38 @@
+<!-- Adding collisions between objects -->
+<p>You can get sprites to collide with the following code:</p>
+
+<pre>
+  function createFunction() {
+    someSprite.physics.arcade.enable(ground3);
+  }
+
+  function updateFunction() {
+    game.physics.arcade.collide(someSprite, anotherSprite);
+  }
+</pre>
+
+<p>Here it is in context:</p>
+
+<pre>
+  var ground3;
+
+  function createFunction() {
+    ...
+    game.add.sprite(100, 350, 'ground');
+    ground3 = game.add.sprite(200, 350, 'ground');
+
+    // adds physics to the ground3 sprite
+    game.physics.arcade.enable(ground3);
+
+    // makes the ground3 sprite immovable
+    ground3.body.immovable = true;
+
+  }
+
+  function updateFunction() {
+    // makes the player and ground3 sprites collide with each other
+    game.physics.arcade.collide(player, ground3);
+  }
+</pre>
+
+<p><a href="http://jsbin.com/piqabo/22/edit?js,output" target="_blank">Link to code</a></p>
