@@ -1,0 +1,54 @@
+<!-- Horizontal movement -->
+<p>You can use <code>if...else</code> statements plus a few other tools to get sprites to move on the screen.</p>
+
+<p>You can add a input key to the game with:</p>
+
+<pre>
+  someKeyName = game.input.keyboard.addKey(Phaser.Keyboard.SOMEDIRECTION)
+</pre>
+
+<p>You can check if a key is pressed with:</p>
+
+<pre>
+  someKeyName.isDown
+</pre>
+
+<p>You can change the velocity of a sprite with:</p>
+
+<pre>
+  someSprite.body.velocity.x = someNumber;
+</pre>
+
+<p>Here's all of that in context:</p>
+
+<pre>
+  ...
+
+  // creates a variables for the left arrow key
+  var leftKey;
+
+  function createFunction() {
+    ...
+    ground3.body.immovable = true;
+
+    // assigns the left arrow key to the leftKey variable
+    leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+
+  }
+
+  function updateFunction() {
+    ...
+    game.physics.arcade.collide(player, ground3);
+
+    // checks if the left key is pressed
+    if (leftKey.isDown) {
+      // changes the players horizontal velocity to -50
+      player.body.velocity.x = -50;
+    } else {
+      player.body.velocity.x = 0;
+    }
+
+}
+</pre>
+
+<p><a href="http://jsbin.com/piqabo/99/edit?js,output" target="_blank">Link to code</a></p>

@@ -1,0 +1,33 @@
+<!-- Animations -->
+
+<p>You can create animations using spritesheets that have been loaded in.</p>
+<p>Add this code in the <code>createFunction()</code>:</p>
+
+<pre>
+player = game.add.sprite(200, 100, 'troll');
+player.animations.add('left', [4,5,6,7], 10, true);
+</pre>
+
+<p>Adding the sprite works the same as loading a regular image. Adding the animation is a little trickier, since it has multiple arguments. Here's what they mean:</p>
+
+<ol>
+  <li>A string that represents the name of the animation</li>
+  <li>An array with the frames you want to use from the spritesheet. The frames go from left to right, like you're reading a book</li>
+  <li>The speed of the animation. The higher this number, the faster the animation will play</li>
+  <li>Whether or not the animation should lose</li>
+</ol>
+
+<p>You can run an animation (usually in the <code>updateFunction()</code>) with:</p>
+
+<pre>
+player.animations.play('left');
+</pre>
+
+<p>The only argument is the name of the animation you want to play:</p>
+
+<p>You can stop all the animations on a sprite with:</p>
+<pre>
+player.animations.stop();
+</pre>
+
+<p>Check out this <a href="http://jsbin.com/piqabo/101/edit?js,output" target="_blank">link to code</a> to see it all in context</p>

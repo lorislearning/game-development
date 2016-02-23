@@ -1,0 +1,40 @@
+<!-- Jumping -->
+
+<p>You can use the <code>&&</code> operator to get sprites to jump. Just check if the up key is getting pressed and the player is touching the ground.</p>
+
+<p>You can check if a sprite is touching the ground with:</p>
+
+<pre>
+  someSprite.body.touching.down
+</pre>
+
+<p>Here it is in context:</p>
+
+<pre>
+  ...
+
+  var upKey;
+
+  function createFunction() {
+    ...
+
+    upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+  }
+
+  function updateFunction() {
+    ...
+
+    if (leftKey.isDown) {
+      player.body.velocity.x = -50;
+    } else if (rightKey.isDown){
+      player.body.velocity.x = 50;
+    } else if (upKey.isDown && player.body.touching.down) {
+      player.body.velocity.y = -100;
+    } else {
+      player.body.velocity.x = 0;
+    }
+  }
+
+</pre>
+
+<p><a href="http://jsbin.com/piqabo/24/edit?js,output" target="_blank">Link to code</a></p>

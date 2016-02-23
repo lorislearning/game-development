@@ -1,0 +1,77 @@
+<!-- space invaders -->
+<p>This space invaders template moves a baddie across the screen and lets the player shoot at it.</p>
+<p>Check out this <a href="http://jsbin.com/sivipu/3/edit?js,output" target="_blank ">link to code</a> to see the working template.</p>
+
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+  game.load.image('troll', 'http://i.imgur.com/Vm4PZ4h.gif');
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+  game.load.spritesheet('randomSprites', 'http://i.imgur.com/hHImgcn.png', 34, 34);
+
+
+}
+
+var player;
+var leftKey;
+var rightKey;
+var spaceBar;
+var fruits;
+var timer = 0;
+var stars;
+var starInterval = 0;
+
+function createFunction() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+
+  player = game.add.sprite(100, 350, 'troll');
+  game.physics.arcade.enable(player);
+  player.body.collideWorldBounds = true;
+
+  fruits = game.add.group();
+  fruits.enableBody = true;
+  var fruit = fruits.create(50, 50, 'randomSprites');
+  fruit.frame = 340;
+  fruit.scale.setTo(1.5,1.5);
+
+  stars = game.add.group();
+  stars.enableBody = true;
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+  spaceBar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+
+}
+
+function updateFunction() {
+  timer = timer + 1;
+  game.physics.arcade.overlap(fruits, stars, hitFruit, null, this);
+
+  fruits.x += 0.5;
+
+  if (leftKey.isDown) {
+    player.body.velocity.x = -100;
+  } else if (rightKey.isDown){
+    player.body.velocity.x = 100;
+  } else {
+    player.body.velocity.x = 0;
+  }
+
+  starInterval = starInterval - 1;
+  if (spaceBar.isDown) {
+    if (starInterval < 0) {
+      var star = stars.create(player.body.x, player.body.y - 25, 'randomSprites');
+      star.frame = 109;
+      star.body.velocity.y = -100;
+      starInterval = 100;
+    }
+  }
+}
+
+function hitFruit(star, fruit) {
+  fruit.kill();
+  star.kill();
+} -->

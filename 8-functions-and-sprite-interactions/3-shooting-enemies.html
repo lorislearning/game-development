@@ -1,0 +1,203 @@
+<!-- Shooting enemies -->
+
+<p>Shooting enemies can get a little bit tricky. You'll need to create a group of bullets, decide when they should be fired, and also decide what happens when they hit an enemy. In this example, we'll use shooting stars instead of bullets</p>
+
+<p>First we'll create a few variables. Add this code outside of the pre-built functions:</p>
+
+<pre>
+// the key that shoots the star
+var spaceBar;
+
+// the variable that will hold the stars that get shot
+var stars;
+
+// the wait time before the next star can be shot
+var starInterval = 100;
+</pre>
+
+<p>Next you want to make sure the <code>stars</code> variable holds a group and has arcade physics enabled. Add this code in the <code>createFunction()</code></p>
+
+<pre>
+stars = game.add.group();
+stars.enableBody = true;
+</pre>
+
+<p>Also make sure you connect the spacebar variable to the spacebar key in the <code>createFunction()</code>:</p>
+
+<pre>
+spaceBar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+</pre>
+
+<p>Then in the <code>updateFunction()</code> you need to add the code that actually shoots the star. First add an overlap method for the star and baddie:</p>
+
+<pre>
+// when the baddie and stars group interact, the shootBaddie() function is run
+  game.physics.arcade.overlap(baddie, stars, shootBaddie, null, this);
+</pre>
+
+<p>Then this next chunk of code actually deals with shooting the star:</p>
+
+<pre>
+// decreasing the wait time by one
+  starInterval = starInterval - 1;
+
+// shoots the star if the spacebar is down and the wait time is less than zero
+if (spaceBar.isDown) {
+  if (starInterval < 0) {
+    var star = stars.create(player.body.x + 25, player.body.y, 'randomSprites');
+    star.frame = 109;
+    star.body.velocity.x = 100;
+    starInterval = 100;
+  }
+}
+</pre>
+
+<p>First, the <code>starInterval</code> variable is decreased by one. If you didn't do this every time the <code>updateFunction()</code> ran, the player would never be able to shoot more than once. Then you have to check if the spacebar is pressed and the <code>starInterval</code> is less than zero. If both of those conditions are true, you create a new star sprite from the 'randomSprites' spritesheet and set the frame to 109 (the star image). Then you set the x velocity of the star to 100 so it moves right. Finally, you change the starInterval back to 100 so the player can't shoot another star right away.</p>
+
+<p>The last thing you need to do is define the <code>shootBaddie()</code> function:</p>
+
+<pre>
+// What happens when the baddie gets shot
+function shootBaddie(baddie, star) {
+  baddie.kill();
+}
+</pre>
+
+<p>Check out this <a href="http://jsbin.com/sazufi/1/edit?js,output" target="_blank ">link to code</a> to see it all in context</p>
+
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+  game.load.spritesheet('guy', 'http://i.imgur.com/eyIzRIW.png', 32, 48 );
+  game.load.spritesheet('baddie', 'http://i.imgur.com/fKCF23M.png', 80, 80 );
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+  game.load.spritesheet('landSprites', 'http://i.imgur.com/EIG1Uqw.png', 24, 24);
+  game.load.spritesheet('randomSprites', 'http://i.imgur.com/hHImgcn.png', 34, 34);
+}
+
+var player;
+var leftKey;
+var rightKey;
+var upKey;
+var fruits;
+var platforms;
+var score = 0;
+// the key that shoots the star
+var spaceBar;
+// the variable that will hold the stars that get shot
+var stars;
+// the wait time before the next star can be shot
+var starInterval = 100;
+
+function createFunction() {
+  // make the star variable hold a group and enable arcade physics on it
+  stars = game.add.group();
+  stars.enableBody = true;
+
+
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+  game.physics.arcade.OVERLAP_BIAS = 600;
+
+  player = game.add.sprite(200, 100, 'guy');
+  game.physics.arcade.enable(player);
+  player.body.gravity.y = 300;
+  player.body.collideWorldBounds = true;
+  player.animations.add('left', [4,5,6,7], 10, true);
+  player.animations.add('right', [8,9,10,11], 10, true);
+
+
+  baddie = game.add.sprite(400, 200, 'baddie');
+  game.physics.arcade.enable(baddie);
+  baddie.body.gravity.y = 300;
+  baddie.body.collideWorldBounds = true;
+  baddie.animations.add('left', [4,5,6,7], 7, true);
+  baddie.animations.add('right', [8,9,10,11], 5, true);
+  baddie.animations.play('left');
+
+  platforms = game.add.group();
+  platforms.enableBody = true;
+
+  for(i=0; i<4; i++) {
+    var singlePlatform = platforms.create(i*100,350, 'ground');
+    singlePlatform.body.immovable = true;
+  }
+
+  fruits = game.add.group();
+  fruits.enableBody = true;
+
+  for(i=0; i<6; i++) {
+    var fruit = fruits.create(i*30, 100, 'randomSprites');
+
+    fruit.body.gravity.y = 300;
+  }
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+  upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+  // Connects the spaceBar variable to the spacebar key
+  spaceBar = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+
+  text = game.add.text(10, 10, 'Score: 0');
+  text.fill = '#FFF';
+}
+
+function updateFunction() {
+  game.physics.arcade.collide(player, platforms);
+  game.physics.arcade.collide(baddie, platforms);
+  game.physics.arcade.collide(fruits, platforms);
+  game.physics.arcade.overlap(player, fruits, collectFruit, null, this);
+  game.physics.arcade.overlap(player, baddie, hitBaddie, null, this);
+
+  // when the baddie and stars group interact, the shootBaddie() function is run
+  game.physics.arcade.overlap(baddie, stars, shootBaddie, null, this);
+
+  baddie.body.velocity.x = -40;
+
+
+  if (leftKey.isDown) {
+    player.body.velocity.x = -50;
+    player.animations.play('left');
+  } else if (rightKey.isDown){
+    player.body.velocity.x = 50;
+    player.animations.play('right');
+  } else  {
+    player.animations.stop();
+    player.body.velocity.x = 0;
+  }
+
+  if (upKey.isDown && player.body.touching.down) {
+    player.body.velocity.y = -200;
+  }
+
+  // decreasing the wait time by one
+  starInterval = starInterval - 1;
+
+  // shoots the star if the spacebar is down and the wait time is less than zero
+  if (spaceBar.isDown) {
+    if (starInterval < 0) {
+      var star = stars.create(player.body.x + 25, player.body.y, 'randomSprites');
+      star.frame = 109;
+      star.body.velocity.x = 100;
+      starInterval = 100;
+    }
+  }
+}
+
+function collectFruit(player, fruit) {
+  score = score + 1;
+  text.text = 'Score: ' + score;
+  fruit.kill();
+}
+
+function hitBaddie(player, baddie) {
+  score = 0;
+  text.text = 'Score: 0';
+  player.kill();
+}
+
+// What happens when the baddie gets shot
+function shootBaddie(baddie, star) {
+  baddie.kill();
+} -->

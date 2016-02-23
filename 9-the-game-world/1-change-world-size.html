@@ -1,0 +1,92 @@
+<!-- Change world size and follow with camera  -->
+<p>You already know how to change the size of your world and window together, but what if you want to keep your window small but make your world much larger?</p>
+
+<p>You can change the size of your world in your <code>createFunction()</code> with:</p>
+
+<pre>
+game.world.setBounds(0, 0, 400, 1920);
+</pre>
+
+<p>The <code>setBounds()</code> method takes in four arguments:</p>
+<ol>
+  <li>The x-value of the top-left corner of the world</li>
+  <li>The y-value of the top-left corner of the world</li>
+  <li>The width of the world in pixels</li>
+  <li>The height of the world in pixels</li>
+</ol>
+
+<p>You also might want to make the camera follow your player as it moves around in the world. You can do this in your <code>createFunction()</code> with:</p>
+<pre>
+game.camera.follow(player);
+</pre>
+
+<p>The <code>follow()</code> method only takes in one argument - the sprite that the camera is going to follow.</p>
+
+<p>Check out this <a href="http://jsbin.com/hekunix/2/edit?js,output" target="_blank ">link to code</a> to see it all in context</p>
+
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+  game.load.image('troll', 'http://i.imgur.com/Vm4PZ4h.gif');
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+
+}
+
+var player;
+var ground1;
+var ground2;
+var ground3;
+var leftKey;
+var rightKey;
+var upKey;
+
+function createFunction() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+  // Change the size of the game world
+  game.world.setBounds(0, 0, 400, 1920);
+
+  player = game.add.sprite(200, 100, 'troll');
+  game.physics.arcade.enable(player);
+  player.body.gravity.y = 300;
+  player.body.collideWorldBounds = true;
+
+  // follow the player in the game world
+  game.camera.follow(player);
+
+  ground1 = game.add.sprite(0, 350, 'ground');
+  ground2 = game.add.sprite(100, 350, 'ground');
+  ground3 = game.add.sprite(200, 350, 'ground');
+  game.physics.arcade.enable(ground1);
+  game.physics.arcade.enable(ground2);
+  game.physics.arcade.enable(ground3);
+  ground1.body.immovable = true;
+  ground2.body.immovable = true;
+  ground3.body.immovable = true;
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+  upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+
+}
+
+function updateFunction() {
+  game.physics.arcade.collide(player, ground1);
+  game.physics.arcade.collide(player, ground2);
+  game.physics.arcade.collide(player, ground3);
+
+  if (leftKey.isDown) {
+    player.body.velocity.x = -50;
+  } else if (rightKey.isDown){
+    player.body.velocity.x = 50;
+  } else  {
+    player.body.velocity.x = 0;
+  }
+
+  if (upKey.isDown && player.body.touching.down) {
+    player.body.velocity.y = -100;
+  }
+
+
+} -->

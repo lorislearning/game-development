@@ -1,0 +1,32 @@
+<!-- For loop intro -->
+
+<p>If you ever find yourself repeating code, think about using a loop. For example, lets say you wanted to print out all of the items in an array. You could do something like this:</p>
+<pre>
+fruits = ['apples', 'oranges', 'bananas'];
+
+console.log(fruits[0]);
+console.log(fruits[1]);
+console.log(fruits[2]);
+</pre>
+
+<p>But this code is pretty bad. You're repeating yourself a lot. One of the core principles in programming is Don't Repeat Yourself (DRY). You can use loops to DRY up our code</p>
+
+<pre>
+fruits = ['apples', 'oranges', 'bananas'];
+
+for(i=0; i<3; i++) {
+  console.log(fruits[i]);
+}
+</pre>
+<p><a href="http://jsbin.com/raveco/2/edit?js,output" target="_blank">Link to code</a></p>
+
+<p>There's a lot going on here, so let's go through it step-by-step:</p>
+<ul>
+  <li>The <code>for()</code> function takes in three inputs separated by semi-colons</li>
+  <li>The first input is a variable with starting value. In this case, the variable is <code>i</code> and its starting value is <code>0</code></li>
+  <li>The second input is a rule for when the loop should keep running. In this case, the rule is when <code>i < 3</code></li>
+  <li>The last input is what happens to the variable each time the loop runs. In this case, the variable <code>i</code> is increased by one each time.</li>
+  <li>The code between the <code>{ }</code> gets run every time the loop runs</li>
+</ul>
+
+

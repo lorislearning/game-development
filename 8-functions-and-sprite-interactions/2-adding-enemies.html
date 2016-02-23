@@ -1,0 +1,20 @@
+<!-- Addding enemies -->
+<p>You add enemy sprites the same way you add player sprites. If you wanted a player and an enemy to interact, you could add this code to your <code>updateFunction()</code>:</p>
+
+<pre>
+game.physics.arcade.overlap(player, baddie, hitBaddie, null, this);
+</pre>
+
+<p>The <code>hitBaddie()</code> function is run whenever a player sprite overlaps a baddie sprite.</p>
+
+<p>Here is what the <code>hitBaddie()</code> function looks like. It's defined as a completely separate function, outside any of the pre-built Phaser functions:</p>
+
+<pre>
+function hitBaddie(player, baddie) {
+  score = 0;
+  text.text = 'Score: 0';
+  player.kill();
+}
+</pre>
+
+<p>Check out this <a href="http://jsbin.com/ceximi/2/edit?js,output" target="_blank ">link to code</a> to see it all in context</p>

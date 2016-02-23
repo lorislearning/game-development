@@ -1,0 +1,27 @@
+<!-- Groups -->
+
+<p> Groups let you combine sprites together so that you can DRY up your Phaser code.Let 's say you wanted to group a set of sprites together. First you would need to create a variable for the group:</p>
+
+<pre> var fruits; </pre>
+
+<p>Then you would need to create the group in the <code>createFunction()</code>:</p>
+
+<pre> fruits = game.add.group();</pre>
+
+<p>Then, assuming you wanted to add physics, you can add it to the entire group at once:</p>
+
+<pre> fruits.enableBody = true; </pre>
+
+<p>Then you can create your sprites and add them to your group inside a loop. Suppose you wanted to create 3 sprites:</p>
+
+<pre>
+for(i=0; i<7; i++) {
+  var item = fruits.create(i*30, 100, 'randomSprites ');
+}
+</pre>
+
+<p>Finally, in the <code>updateFunction()</code>, you can collide a sprite with an entire group:</p>
+
+<pre> game.physics.arcade.collide(player, fruits);</pre>
+
+<p>Check out this <a href="http://jsbin.com/piqabo/100/edit?js,output" target="_blank ">Link to code</a> to see it all in context</p>

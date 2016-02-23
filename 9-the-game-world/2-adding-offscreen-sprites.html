@@ -1,0 +1,71 @@
+<!-- Adding offscreen sprites -->
+
+<p>Adding sprites that are outside the visible window is pretty easy. Just make sure they fit in the game world, even if they don't fit in the window.</p>
+
+<p>Check out this <a href="http://jsbin.com/guquhe/3/edit?js,output" target="_blank ">link to code</a> to see it all in context</p>
+
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+  game.load.image('troll', 'http://i.imgur.com/Vm4PZ4h.gif');
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+
+}
+
+var player;
+var ground1;
+var ground2;
+var ground3;
+var leftKey;
+var rightKey;
+var upKey;
+
+function createFunction() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+  // Change the width of the game world to 800px
+  game.world.setBounds(0, 0, 800, 400);
+
+  player = game.add.sprite(200, 100, 'troll');
+  game.physics.arcade.enable(player);
+  player.body.gravity.y = 300;
+  player.body.collideWorldBounds = true;
+  game.camera.follow(player);
+
+  // changes the x position of the first ground
+  ground1 = game.add.sprite(330, 350, 'ground');
+  ground2 = game.add.sprite(100, 350, 'ground');
+  ground3 = game.add.sprite(200, 350, 'ground');
+  game.physics.arcade.enable(ground1);
+  game.physics.arcade.enable(ground2);
+  game.physics.arcade.enable(ground3);
+  ground1.body.immovable = true;
+  ground2.body.immovable = true;
+  ground3.body.immovable = true;
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+  upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+
+}
+
+function updateFunction() {
+  game.physics.arcade.collide(player, ground1);
+  game.physics.arcade.collide(player, ground2);
+  game.physics.arcade.collide(player, ground3);
+
+  if (leftKey.isDown) {
+    player.body.velocity.x = -50;
+  } else if (rightKey.isDown){
+    player.body.velocity.x = 50;
+  } else  {
+    player.body.velocity.x = 0;
+  }
+
+  if (upKey.isDown && player.body.touching.down) {
+    player.body.velocity.y = -100;
+  }
+
+
+} -->

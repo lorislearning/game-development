@@ -1,0 +1,25 @@
+<!-- Adding spritesheets -->
+
+<p>Spritesheets are like arrays of images. They make it easy to load multiple images in your game since a spritesheet can hold hundreds of images. </p>
+
+<p>Click <a href="http://i.imgur.com/eyIzRIW.png" target="_blank">this link</a> for an example of a spritesheet.</p>
+
+<p>You need to know the width and height of each frame in the spritesheet when you add it. The spritesheet in the link above has 16 frames that are each 32px wide and 48px tall. If you don't know the height and width of each frame:</p>
+<ol>
+  <li>Open up the image on your computer or in an image editor</li>
+  <li>Find the total size of the image</li>
+  <li>Divide by the number of frames on each side</li>
+</ol>
+
+<p>You can add the spritesheet to your game in the <code>preloadFunction()</code> with:</p>
+
+<pre>
+game.load.spritesheet('troll', 'http://i.imgur.com/eyIzRIW.png', 32, 48);
+</pre>
+
+<p>Check out this <a href="http://jsbin.com/piqabo/103/edit?js,output" target="_blank">link to code</a> to see it all in context</p>
+
+
+
+
+

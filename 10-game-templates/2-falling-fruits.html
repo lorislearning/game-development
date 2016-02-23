@@ -1,0 +1,57 @@
+<!-- falling fruits -->
+<p>This falling fruits template generates a falling fruit every second. The player has horizontal movement and can catch the fruit.</p>
+<p>Check out this <a href="http://jsbin.com/roliyo/3/edit?js,output" target="_blank ">link to code</a> to see the working template.</p>
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+  game.load.image('troll', 'http://i.imgur.com/Vm4PZ4h.gif');
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+  game.load.spritesheet('randomSprites', 'http://i.imgur.com/hHImgcn.png', 34, 34);
+}
+
+var player;
+var leftKey;
+var rightKey;
+var fruits;
+var timer = 0;
+
+function createFunction() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+
+  player = game.add.sprite(100, 350, 'troll');
+  game.physics.arcade.enable(player);
+  player.body.collideWorldBounds = true;
+
+  fruits = game.add.group();
+  fruits.enableBody = true;
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+
+}
+
+function updateFunction() {
+  timer = timer + 1;
+
+  game.physics.arcade.overlap(player, fruits, collectFruit, null, this);
+
+  if (leftKey.isDown) {
+    player.body.velocity.x = -100;
+  } else if (rightKey.isDown){
+    player.body.velocity.x = 100;
+  } else {
+    player.body.velocity.x = 0;
+  }
+
+  if ( timer%60 === 0) {
+    var fruit = fruits.create(30, 0, 'randomSprites');
+
+    fruit.body.gravity.y = 300;
+  }
+}
+
+function collectFruit(player, fruit) {
+  fruit.kill();
+} -->

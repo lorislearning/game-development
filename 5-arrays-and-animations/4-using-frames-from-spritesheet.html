@@ -1,0 +1,74 @@
+<!-- Using frames from a spritesheet -->
+
+<p>You can use single frames from a spritesheet to change the look of a sprite:</p>
+
+<pre>
+player.frame = 4;
+</pre>
+
+<p><code>player</code> is the sprite you want to change and <code>4</code> is the frame number from its spritesheet. This will only work if you loaded the sprite from a spritesheet instead of an image.</p>
+
+<p>Check out this <a href="http://jsbin.com/pusaro/2/edit?js,output" target="_blank">link to code</a> to see it all in context</p>
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+  game.load.spritesheet('troll', 'http://i.imgur.com/eyIzRIW.png', 32, 48 );
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+
+}
+
+var player;
+var ground1;
+var ground2;
+var ground3;
+var leftKey;
+var rightKey;
+var upKey;
+
+function createFunction() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+  player = game.add.sprite(200, 100, 'troll');
+
+  // use the fifth frame from the troll spritesheet
+  player.frame = 4;
+  game.physics.arcade.enable(player);
+  player.body.gravity.y = 300;
+  player.body.collideWorldBounds = true;
+
+  ground1 = game.add.sprite(0, 350, 'ground');
+  ground2 = game.add.sprite(100, 350, 'ground');
+  ground3 = game.add.sprite(200, 350, 'ground');
+  game.physics.arcade.enable(ground1);
+  game.physics.arcade.enable(ground2);
+  game.physics.arcade.enable(ground3);
+  ground1.body.immovable = true;
+  ground2.body.immovable = true;
+  ground3.body.immovable = true;
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+  upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+
+}
+
+function updateFunction() {
+  game.physics.arcade.collide(player, ground1);
+  game.physics.arcade.collide(player, ground2);
+  game.physics.arcade.collide(player, ground3);
+
+  if (leftKey.isDown) {
+    player.body.velocity.x = -50;
+  } else if (rightKey.isDown){
+    player.body.velocity.x = 50;
+  } else  {
+    player.body.velocity.x = 0;
+  }
+
+  if (upKey.isDown && player.body.touching.down) {
+    player.body.velocity.y = -100;
+  }
+
+
+} -->

@@ -1,0 +1,111 @@
+<!-- Collecting objects -->
+
+<p>You can have two sprites interact when they overlap by using the following code in the <code>updateFunction()</code>:</p>
+
+<pre>
+game.physics.arcade.overlap(player, fruits, collectFruit, null, this);
+</pre>
+
+<p>The overlap method takes in 5 arguments:</p>
+<ol>
+  <li>One sprite (or group)</li>
+  <li>Another sprite (or group)</li>
+  <li>A function that gets run when the two sprites overlap on the display</li>
+  <li>An optional extra function that lets you perform more checks on the two sprites (you can usually leave this value as <code>null</code>)</li>
+  <li>The context for the function (you can usually leave this value as <code>this</code>)</li>
+</ol>
+
+<p>To make the code work, you'll have to write your own <code>collectFruit()</code> function and place it outside of all the other functions:</p>
+
+<pre>
+function collectFruit(player, fruit) {
+  score = score + 1;
+  text.text = 'Score: ' + score;
+  fruit.kill();
+}
+</pre>
+
+<p>This function takes in two arguments, the first is the player sprite and the second is a sprite from the fruits group. Every time this function is called, it increases the score by one, changes the text on the screen and hides the fruit sprite.</p>
+
+<p>Check out this <a href="http://jsbin.com/piqabo/60/edit?js,output" target="_blank ">link to code</a> to see it all in context</p>
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+//   game.load.image('troll', 'http://i.imgur.com/Vm4PZ4h.gif');
+  game.load.spritesheet('guy', 'http://i.imgur.com/eyIzRIW.png', 32, 48 );
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+  game.load.spritesheet('landSprites', 'http://i.imgur.com/EIG1Uqw.png', 24, 24);
+  game.load.spritesheet('randomSprites', 'http://i.imgur.com/hHImgcn.png', 34, 34);
+}
+
+var player;
+var leftKey;
+var rightKey;
+var upKey;
+var fruits;
+var platforms;
+var score = 0;
+
+function createFunction() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+
+  player = game.add.sprite(200, 100, 'guy');
+  game.physics.arcade.enable(player);
+  player.body.gravity.y = 300;
+  player.body.collideWorldBounds = true;
+  player.animations.add('left', [4,5,6,7], 10, true);
+  player.animations.add('right', [8,9,10,11], 10, true);
+
+  platforms = game.add.group();
+  platforms.enableBody = true;
+
+  for(i=0; i<4; i++) {
+    var singlePlatform = platforms.create(i*100,350, 'ground');
+    singlePlatform.body.immovable = true;
+  }
+
+  fruits = game.add.group();
+  fruits.enableBody = true;
+
+  for(i=0; i<6; i++) {
+    var fruit = fruits.create(i*30, 100, 'randomSprites');
+
+    fruit.body.gravity.y = 300;
+  }
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+  upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+
+  text = game.add.text(10, 10, 'Score: 0');
+  text.fill = '#FFF';
+}
+
+function updateFunction() {
+  game.physics.arcade.collide(player, platforms);
+  game.physics.arcade.collide(fruits, platforms);
+  game.physics.arcade.overlap(player, fruits, collectFruit, null, this);
+
+  if (leftKey.isDown) {
+    player.body.velocity.x = -50;
+    player.animations.play('left');
+  } else if (rightKey.isDown){
+    player.body.velocity.x = 50;
+    player.animations.play('right');
+  } else  {
+    player.animations.stop();
+    player.body.velocity.x = 0;
+  }
+
+  if (upKey.isDown && player.body.touching.down) {
+    player.body.velocity.y = -200;
+  }
+}
+
+function collectFruit(player, fruit) {
+  score = score + 1;
+  text.text = 'Score: ' + score;
+  fruit.kill();
+} -->

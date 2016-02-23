@@ -1,0 +1,25 @@
+<!-- Jumping and moving left/right -->
+
+<p>If you want to jump and move left/right at the same time, you'll need to use different <code>if-else</code> statements. Remember, the program only chooses one option from every statement, so you'll need two different statements to get the spreite to jump up <em>and</em> move horizontally.</p>
+
+<p>Here's the important change:</p>
+
+<pre>
+  function updateFunction() {
+    if (leftKey.isDown) {
+      player.body.velocity.x = -50;
+    } else if (rightKey.isDown){
+      player.body.velocity.x = 50;
+    } else  {
+      player.body.velocity.x = 0;
+    }
+
+    if (upKey.isDown && player.body.touching.down) {
+      player.body.velocity.y = -100;
+    }
+  }
+
+</pre>
+
+<p><a href="http://jsbin.com/piqabo/31/edit?js,output" target="_blank">Link to code</a></p>
+

@@ -1,0 +1,31 @@
+<!-- Changing Text -->
+<p>You can change text that's been saved to a variable (<code>timerDisplay</code>) with the following code:</p>
+
+<pre>
+timerDisplay.text = 'new text';
+</pre>
+
+<p>Every text object has a <code>text</code> property that holds the actual words that get displayed.</p>
+
+<p>If you want the text to update continually, put your code in the <code>updateFunction()</code></p>
+
+<p>Check out this <a href="http://jsbin.com/wadafem/4/edit?js,output" target="_blank ">Link to code</a> to see it all in context</p>
+
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+var timer = 0;
+var timerDisplay;
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+}
+
+function createFunction() {
+  timerDisplay = game.add.text(10, 10, 'Timer: 0', { font: '34px Helvetica', fill: '#fff' });
+}
+
+function updateFunction() {
+  timer = timer + 1;
+  timerDisplay.text = 'Timer: ' + timer;
+} -->

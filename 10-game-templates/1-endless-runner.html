@@ -1,0 +1,100 @@
+<!-- endless runner -->
+<p>This enless runner template randomly generates platforms in the update function and moves them across the screen.</p>
+
+<p>Check out this <a href="http://jsbin.com/murubuv/5/edit?js,output" target="_blank ">link to code</a> to see the working template.</p>
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+  game.load.spritesheet('guy', 'http://i.imgur.com/eyIzRIW.png', 32, 48 );
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+  game.load.spritesheet('landSprites', 'http://i.imgur.com/EIG1Uqw.png', 24, 24);
+  game.load.spritesheet('randomSprites', 'http://i.imgur.com/hHImgcn.png', 34, 34);
+}
+
+var player;
+var leftKey;
+var rightKey;
+var upKey;
+var platforms;
+var score = 0;
+var time = 0;
+var platformVelocity = -1;
+var lastHeight = 300;
+
+function createFunction() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+
+  player = game.add.sprite(200, 100, 'guy');
+  game.physics.arcade.enable(player);
+  player.body.gravity.y = 300;
+  player.animations.add('left', [4,5,6,7], 10, true);
+  player.animations.add('right', [8,9,10,11], 10, true);
+
+  platforms = game.add.group();
+  platforms.enableBody = true;
+
+  for(i=0; i<6; i++) {
+    var singlePlatform = platforms.create(i*100,350, 'ground');
+    singlePlatform.body.immovable = true;
+  }
+
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+  upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+
+  text = game.add.text(10, 10, 'Score: 0');
+  text.fill = '#FFF';
+}
+
+function updateFunction() {
+  time += 1;
+  game.physics.arcade.collide(player, platforms);
+
+  if (upKey.isDown && player.body.touching.down) {
+    player.body.velocity.y = -300;
+  }
+
+  if (leftKey.isDown) {
+    player.body.x += -1;
+    player.animations.play('left');
+  } else if (rightKey.isDown){
+    player.body.x += 1;
+    player.animations.play('right');
+  } else {
+    player.animations.stop();
+    player.body.velocity.x = 0;
+  }
+
+  if (player.body.touching.down) {
+    if (leftKey.isDown) {
+      player.body.x += -1 + platformVelocity;
+      player.animations.play('left');
+    } else if (rightKey.isDown){
+      player.body.x += 1 + platformVelocity;
+      player.animations.play('right');
+    } else {
+      player.body.x += platformVelocity;
+      player.animations.stop();
+    }
+  }
+
+  platforms.x += platformVelocity;
+  if ((time % 180) === 0) {
+    var plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+    var newHeight = lastHeight + plusOrMinus * Math.random()*150;
+    if (newHeight < 50) {
+      newHeight = 50;
+    } else if (newHeight > 400) {
+      newHeight = 400;
+    }
+    var singlePlatform = platforms.create(-platforms.x+ 500,newHeight, 'ground');
+    lastHeight = newHeight;
+    singlePlatform.body.immovable = true;
+    console.log(singlePlatform.y);
+  }
+}
+
+ -->

@@ -1,0 +1,85 @@
+<!-- Randomly adding sprites -->
+
+<p>You can also use a loop with the <code>Math.random()</code> function to randomly add sprites on the screen. The <code>Math.random()</code> function generates a number between 0 and 1. If you multipied that result by 100, you woudl create a random number between 0 and 100:</p>
+
+<pre>
+Math.random() * 100;
+</pre>
+
+<p>In a game, you might randomize the locations of sprites:</p>
+
+<pre>
+grass = game.add.group();
+grass.enableBody = true;
+for(i=0; i < 16; i++) {
+  // Randomly add sprites to on the screen
+  var grassTile = grass.create(i*48, Math.random()*400, 'environment');
+  grassTile.frame = 1;
+  grassTile.body.immovable = true;
+}
+</pre>
+
+<p>Check out this <a href="http://jsbin.com/zikusac/2/edit?js,output" target="_blank ">Link to code</a> to see it all in context</p>
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+  game.load.spritesheet('guy', 'http://i.imgur.com/eyIzRIW.png', 32, 48);
+  game.load.spritesheet('environment', 'http://i.imgur.com/Nq9Toei.png', 24, 24);
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+  game.load.spritesheet('landSprites', 'http://i.imgur.com/EIG1Uqw.png', 24, 24);
+  game.load.spritesheet('randomSprites', 'http://i.imgur.com/hHImgcn.png', 34, 34);
+}
+
+var player;
+var ground1;
+var ground2;
+var ground3;
+var leftKey;
+var rightKey;
+var upKey;
+var grass;
+
+function createFunction() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+
+  player = game.add.sprite(200, 100, 'guy');
+  game.physics.arcade.enable(player);
+  player.body.gravity.y = 300;
+  player.body.collideWorldBounds = true;
+  player.animations.add('left', [4,5,6,7], 10, true);
+  player.animations.add('right', [8,9,10,11], 10, true);
+
+  grass = game.add.group();
+  grass.enableBody = true;
+  for(i=0; i < 16; i++) {
+    // Randomly add sprites to on the screen
+    var grassTile = grass.create(i*48, Math.random()*400, 'environment');
+    grassTile.frame = 1;
+    grassTile.body.immovable = true;
+  }
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+  upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+}
+
+function updateFunction() {
+  game.physics.arcade.collide(player, grass);
+
+  if (leftKey.isDown) {
+    player.body.velocity.x = -50;
+    player.animations.play('left');
+  } else if (rightKey.isDown){
+    player.body.velocity.x = 50;
+    player.animations.play('right');
+  } else  {
+    player.animations.stop();
+    player.body.velocity.x = 0;
+  }
+
+  if (upKey.isDown && player.body.touching.down) {
+    player.body.velocity.y = -200;
+  }
+} -->

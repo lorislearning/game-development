@@ -1,0 +1,96 @@
+<!-- Using a loop to add sprites -->
+
+<p>You can use <code>for()</code> loops to efficiently add lots of sprites to a screen. Assuming you already a variable called <code>grass</code>, here's some sample code to add multiple grass tiles from a spritesheet:</p>
+
+<pre>
+grass = game.add.group();
+grass.enableBody = true;
+for(i=0; i < 16; i++) {
+  var grassTile = grass.create(i*24, 350, 'environment');
+  grassTile.frame = 1;
+  grassTile.body.immovable = true;
+}
+</pre>
+
+<p><a href="http://jsbin.com/fuyepo/5/edit?js,output" target="_blank">Link to code</a></p>
+
+<p>This saves you the trouble of adding each sprite individually. You can even use the collide method with a full group of sprites all at once:</p>
+
+<pre>
+game.physics.arcade.collide(player, grass);
+</pre>
+
+<p>This is much better than writing the collide method 16 times.</p>
+
+
+<!-- var game = new Phaser.Game(400, 400, Phaser.AUTO, 'phaser-example', { preload: preloadFunction, create: createFunction, update: updateFunction });
+
+function preloadFunction() {
+  game.load.crossOrigin = true;
+  game.load.spritesheet('guy', 'http://i.imgur.com/eyIzRIW.png', 32, 48);
+  game.load.spritesheet('environment', 'http://i.imgur.com/Nq9Toei.png', 24, 24);
+  game.load.image('ground', 'http://i.imgur.com/EIG1Uqw.png');
+  game.load.spritesheet('landSprites', 'http://i.imgur.com/EIG1Uqw.png', 24, 24);
+  game.load.spritesheet('randomSprites', 'http://i.imgur.com/hHImgcn.png', 34, 34);
+}
+
+var player;
+var ground1;
+var ground2;
+var ground3;
+var leftKey;
+var rightKey;
+var upKey;
+// Add a variable to hold the group of platform sprites
+var grass;
+
+function createFunction() {
+  game.physics.startSystem(Phaser.Physics.ARCADE);
+
+  player = game.add.sprite(200, 100, 'guy');
+  game.physics.arcade.enable(player);
+  player.body.gravity.y = 300;
+  player.body.collideWorldBounds = true;
+  player.animations.add('left', [4,5,6,7], 10, true);
+  player.animations.add('right', [8,9,10,11], 10, true);
+
+  // Save the group into the 'grass' variable
+  grass = game.add.group();
+  // Enable physics on the group
+  grass.enableBody = true;
+  for(i=0; i < 16; i++) {
+    // Add a sprite into the 'grass' group, using the 'i' variable from the for loop
+    var grassTile = grass.create(i*24, 350, 'environment');
+    // use the second frame from the spritesheet
+    grassTile.frame = 1;
+    // make sure the sprite doesn't move when the player touches it
+    grassTile.body.immovable = true;
+  }
+
+
+
+
+
+  leftKey = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
+  rightKey = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
+  upKey = game.input.keyboard.addKey(Phaser.Keyboard.UP);
+}
+
+function updateFunction() {
+  game.physics.arcade.collide(player, grass);
+
+  if (leftKey.isDown) {
+    player.body.velocity.x = -50;
+    player.animations.play('left');
+  } else if (rightKey.isDown){
+    player.body.velocity.x = 50;
+    player.animations.play('right');
+  } else  {
+    player.animations.stop();
+    player.body.velocity.x = 0;
+  }
+
+  if (upKey.isDown && player.body.touching.down) {
+    player.body.velocity.y = -200;
+  }
+} -->
